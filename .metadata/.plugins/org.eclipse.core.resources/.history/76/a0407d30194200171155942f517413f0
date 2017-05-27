@@ -1,0 +1,12 @@
+package com.james;
+
+public class Team {
+	
+	double attack = 0.5;
+	double defence = 0.5;
+	
+	public Team(){
+		
+	}
+
+}

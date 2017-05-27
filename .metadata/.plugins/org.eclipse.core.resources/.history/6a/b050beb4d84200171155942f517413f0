@@ -1,0 +1,9 @@
+package com.james;
+
+public class Game {
+	
+	public static void main(String[] args){
+		MatchSim.runMatch(new Team("Chelsea", 0.85,0.67,0.7,0.7),new Team("Liverpool", 0.78,0.58,1,0.9),1);
+	}
+
+}

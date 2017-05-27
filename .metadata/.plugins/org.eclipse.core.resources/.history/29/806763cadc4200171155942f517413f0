@@ -1,0 +1,81 @@
+package com.james;
+
+public class MatchSim {
+	
+	static double trials = 1;
+	static int totalGoals = 0;
+	
+	static int openPlayGoalsA = 0;
+	static int penGoalsA = 0;
+	static int freeKickGoalsA = 0;
+	
+	static int openPlayGoalsB = 0;
+	static int penGoalsB = 0;
+	static int freeKickGoalsB = 0;
+	
+	static int pens = 0;
+	static int freekicks = 0;
+	
+	static int teamAgoals;
+	static int teamBgoals;
+
+	public static void runMatch(Team a, Team b, double trials) {
+		
+		for(int z = 1; z<=trials; z++){
+			for(int i = 1; i<= 90; i++){
+				Result resultA = teamLoop(b,a);
+				Result resultB = teamLoop(a,b);
+				
+				if(resultA.goalScored()) teamAgoals++;
+				if(resultA.freekickScored()) freeKickGoalsA++;
+				if(resultA.penaltyScored()) penGoalsA++;
+				if(resultB.goalScored()) teamBgoals++;
+				if(resultB.freekickScored()) freeKickGoalsB++;
+				if(resultB.penaltyScored()) penGoalsB++;
+				
+			}
+		}
+		
+		double averagePens = pens/trials;
+		double averageFreekicks = freekicks/trials;
+		
+		//System.out.println("total goals: "+(teamAgoals+teamBgoals)/trials);
+		//System.out.println("open play goals: "+(teamAgoals+teamBgoals-freeKickGoalsA-freeKickGoalsB-penGoalsA-penGoalsB)/trials);
+		//System.out.println("pens: "+averagePens);
+		//System.out.println("freekicks: "+averageFreekicks);
+		
+		//System.out.println("teamAGoals: "+teamAgoals/trials+" (Freekicks: "+freeKickGoalsA/trials+") (Pens: "+penGoalsA/trials+")");
+		//System.out.println("teamBGoals: "+teamBgoals/trials+" (Freekicks: "+freeKickGoalsB/trials+") (Pens: "+penGoalsB/trials+")");
+		System.out.println(a.name+" "+teamAgoals+"-"+teamBgoals+" "+b.name);
+
+	}
+	
+	public static Result teamLoop(Team teamA, Team teamB){
+		double rand = Math.random();
+		//Probability of defensive error
+		if(rand <= 1-teamA.defence){
+			rand = Math.random();
+			if(rand <= 0.02){
+				pens++;
+				rand = Math.random();
+				if(rand <= teamB.penalites){
+					return new Result(ResultType.GOAL_PENALTY);
+				}
+			} 
+			else if(rand <= 0.08){
+				freekicks++;
+				rand = Math.random();
+				if(rand <= teamB.freekicks){
+					return new Result(ResultType.GOAL_FREE_KICK);
+				}
+			}
+			//prob of attack
+			else if(rand <= teamB.attack){
+				return new Result(ResultType.GOAL_OPEN_PLAY);
+			}
+			
+		}
+		return new Result(ResultType.NOTHING);
+	}
+
+}

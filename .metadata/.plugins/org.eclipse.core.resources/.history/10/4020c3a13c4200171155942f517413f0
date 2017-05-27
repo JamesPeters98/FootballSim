@@ -1,0 +1,9 @@
+package com.james;
+
+public class ResultType {
+	
+	public int OPEN_PLAY = 1;
+	public int FREE_KICK = 2;
+	public int PENALTY = 3;
+
+}

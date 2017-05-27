@@ -1,0 +1,10 @@
+package com.james;
+
+public class ResultType {
+	
+	public int NOTHING = 0;
+	public int GOAL_OPEN_PLAY = 1;
+	public int GOAL_FREE_KICK = 2;
+	public int GOAL_PENALTY = 3;
+
+}

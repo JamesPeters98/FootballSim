@@ -1,0 +1,17 @@
+package com.james;
+
+public class Teams {
+	
+	public static Team LIVERPOOL = new Team("Liverpool", 0.78,0.58,0.7,0.7);
+	public static Team CHELSEA = new Team("Chelsea", 0.85,0.67,0.7,0.7);
+	public static Team MAN_CITY = new Team("Manchester City", 0.80,1-0.39,0.7,0.7);
+	public static Team TOTTENHAM = new Team("Tottenham", 0.86,1-0.26,0.7,0.7);
+	public static Team ARSENAL = new Team("Arsenal", 0.77,1-0.44,0.7,0.7);
+	public static Team MAN_UNITED = new Team("Manchester United", 0.54,1-0.29,0.7,0.7);
+	public static Team EVERTON = new Team("Everton", 0.62,1-0.44,0.7,0.7);
+	public static Team SOUTHAMPTON = new Team("Southampton", 0.62,1-0.48,0.7,0.7);
+	public static Team BOURNEMOUTH = new Team("AFC Bournemouth", 0.55,1-0.67,0.7,0.7);
+	public static Team CRYS_PALACE = new Team("Crystal Palace", 0.50,1-0.63,0.7,0.7);
+	public static Team LEICESTER = new Team("Leicester City", 0.48,1-0.63,0.7,0.7);
+
+}

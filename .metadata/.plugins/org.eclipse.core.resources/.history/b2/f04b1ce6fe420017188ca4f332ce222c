@@ -1,0 +1,101 @@
+package com.james;
+
+import java.util.concurrent.TimeUnit;
+
+public class MatchSim {
+	
+	double trials = 1;
+	int totalGoals = 0;
+	
+	int openPlayGoalsA = 0;
+	int penGoalsA = 0;
+	int freeKickGoalsA = 0;
+	
+	int openPlayGoalsB = 0;
+	int penGoalsB = 0;
+	int freeKickGoalsB = 0;
+	
+	int pens = 0;
+	int freekicks = 0;
+	
+	int teamAgoals;
+	int teamBgoals;
+
+	public MatchResult runMatch(Team home, Team away, int teamId) {
+		
+		if((teamId==home.id)||(teamId==away.id)){
+			System.out.println(home.name+" vs "+away.name);
+			System.out.println("-----------------------");
+		}
+				
+		//for(int z = 1; z<=trials; z++){
+			for(int i = 1; i<= 90; i++){
+				Result resultA = teamLoop(away,home);
+				Result resultB = teamLoop(home,away);
+				
+				if(resultA.goalScored()) teamAgoals++;
+				if(resultA.freekickScored()) freeKickGoalsA++;
+				if(resultA.penaltyScored()) penGoalsA++;
+				if(resultB.goalScored()) teamBgoals++;
+				if(resultB.freekickScored()) freeKickGoalsB++;
+				if(resultB.penaltyScored()) penGoalsB++;
+				
+				if((teamId==home.id)||(teamId==away.id)){
+					System.out.print("Min "+i+" |");
+					if(resultA.goalScored()) System.out.println("GOAL! "+home.name);
+					if(resultB.goalScored()) System.out.println("GOAL! "+away.name);
+					System.out.println("");
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		//}
+		
+		//double averagePens = pens/trials;
+		//double averageFreekicks = freekicks/trials;
+		
+		//System.out.println("total goals: "+(teamAgoals+teamBgoals)/trials);
+		//System.out.println("open play goals: "+(teamAgoals+teamBgoals-freeKickGoalsA-freeKickGoalsB-penGoalsA-penGoalsB)/trials);
+		//System.out.println("pens: "+averagePens);
+		//System.out.println("freekicks: "+averageFreekicks);
+		
+		//System.out.println("teamAGoals: "+teamAgoals/trials+" (Freekicks: "+freeKickGoalsA/trials+") (Pens: "+penGoalsA/trials+")");
+		//System.out.println("teamBGoals: "+teamBgoals/trials+" (Freekicks: "+freeKickGoalsB/trials+") (Pens: "+penGoalsB/trials+")");
+		System.out.println(home.name+" "+teamAgoals+"-"+teamBgoals+" "+away.name);
+		return new MatchResult(home, away, teamAgoals, teamBgoals);
+
+	}
+	
+	public Result teamLoop(Team teamA, Team teamB){
+		double rand = Math.random();
+		//Probability of defensive error
+		if(rand <= 1-teamA.defence){
+			rand = Math.random();
+			if(rand <= 0.02){
+				pens++;
+				rand = Math.random();
+				if(rand <= teamB.penalites){
+					return new Result(ResultType.GOAL_PENALTY);
+				}
+			} 
+			else if(rand <= 0.08){
+				freekicks++;
+				rand = Math.random();
+				if(rand <= teamB.freekicks){
+					return new Result(ResultType.GOAL_FREE_KICK);
+				}
+			}
+			//prob of attack
+			else if(rand <= teamB.attack){
+				return new Result(ResultType.GOAL_OPEN_PLAY);
+			}
+			
+		}
+		return new Result(ResultType.NOTHING);
+	}
+
+}
