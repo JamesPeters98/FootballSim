@@ -9,7 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class League {
 	
@@ -33,6 +32,12 @@ public class League {
 		addTeam(Teams.SWANSEA);
 		addTeam(Teams.WEST_BROM);
 		addTeam(Teams.WEST_HAM);
+		addTeam(Teams.BURNLEY);
+		addTeam(Teams.HULL);
+		addTeam(Teams.MIDDLESBROUGH);
+		addTeam(Teams.WATFORD);
+		addTeam(Teams.STOKE);
+		addTeam(Teams.SUNDERLAND);
 	}
 	
 	private void addTeam(Team team){
@@ -65,12 +70,13 @@ public class League {
 	}
 	
 	public void printTable(){
-		System.out.format("%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{"Team","Points","Goals Scored","Goals Conceeded","Wins","Draws","Losses"});
+		System.out.format("%-2s%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{"","Team","Points","Goals Scored","Goals Conceeded","Wins","Draws","Losses"});
 		System.out.println("----------------------------------------------------------------------------------");
 		ArrayList<LeagueStats> leagueStatsArray = new ArrayList<LeagueStats>(leagueStats.values());
 		Utils.sortArray(leagueStatsArray);
-		for(LeagueStats stats : leagueStatsArray) {
-		    System.out.format("%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{stats.team.name,""+stats.points,""+stats.goals,""+stats.goalsConceeded,""+stats.wins,""+stats.draws,""+stats.losses});
+		for(int i = 0; i <leagueStatsArray.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+		    System.out.format("%-2s%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{""+(i+1),stats.team.name,""+stats.points,""+stats.goals,""+stats.goalsConceeded,""+stats.wins,""+stats.draws,""+stats.losses});
 		}
 	}
 	

@@ -13,7 +13,7 @@ public class Utils {
 
 	public static void promptEnterKey(Scanner scanner){
 		   System.out.println("Press \"ENTER\" to continue...");
-		   scanner.nextLine();
+		   //scanner.nextLine();
 		}
 	
 	public static int readNumber(Scanner scanner, String message){
@@ -67,7 +67,7 @@ public class Utils {
 //		Collections.sort(collection, comparator);
 //	}
 	
-	public static void putChosenTeamAtTopOfArray(LinkedList<Fixture<Team>> fixtures, int teamId){
+	public static void putChosenTeamAtTopOfArray(LinkedList<Fixture<Team>> fixtures, final int teamId){
 		Comparator<Fixture<Team>> comparator = new Comparator<Fixture<Team>>() {
 		    @Override
 		    public int compare(Fixture<Team> left, Fixture<Team> right) {

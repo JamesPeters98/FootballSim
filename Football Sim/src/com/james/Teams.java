@@ -16,5 +16,11 @@ public class Teams {
 	public static Team WEST_HAM = new Team(12,"West Ham United", 0.47,1-0.64,0.7,0.7);
 	public static Team SWANSEA = new Team(13,"Swansea City", 0.45,1-0.7,0.7,0.7);
 	public static Team WEST_BROM = new Team(14,"West Bromwich Albion", 0.43,1-0.51,0.7,0.7);
+	public static Team STOKE = new Team(15,"Stoke City", 0.41,1-0.56,0.7,0.7);
+	public static Team WATFORD = new Team(16,"Watford", 0.40,1-0.68,0.7,0.7);
+	public static Team BURNLEY = new Team(17,"Burnley", 0.39,1-0.55,0.7,0.7);
+	public static Team HULL = new Team(18,"Hull City", 0.37,1-0.80,0.7,0.7);
+	public static Team SUNDERLAND = new Team(19,"Sunderland", 0.29,1-0.69,0.7,0.7);
+	public static Team MIDDLESBROUGH = new Team(20,"Middlesbrough", 0.27,1-0.53,0.7,0.7);
 
 }

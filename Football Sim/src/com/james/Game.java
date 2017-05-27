@@ -45,7 +45,7 @@ public class Game {
 		System.out.println("");
 		
 		for(int i=0; i<rounds.size(); i++){
-		    System.out.println("Week " + (i+1));
+		    System.out.println("Week " + (i+1)+" | Games remaining: "+(rounds.size()-i));
 		    System.out.println("---------");
 		    List<Fixture<Team>> round = rounds.get(i);
 		    for(Fixture<Team> fixture: round){
@@ -55,7 +55,7 @@ public class Game {
 		    Utils.promptEnterKey(reader);
 		    for(Fixture<Team> fixture: round){
 				try {
-					MatchResult result = new MatchSim().runMatch(fixture.getHomeTeam(),fixture.getAwayTeam(),teamId);
+					MatchResult result = new MatchSim().runMatch(reader,fixture.getHomeTeam(),fixture.getAwayTeam(),teamId);
 					league.addStat(result);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
