@@ -56,6 +56,7 @@ public class MatchSim implements KeyListener{
 						//System.out.println("");
 					}
 					//TimeUnit.MILLISECONDS.sleep(250);
+					
 					if(i==45){
 						System.out.println("Half Time!"+home.name+" "+teamAgoals+"-"+teamBgoals+" "+away.name);
 						//TimeUnit.SECONDS.sleep(2);
