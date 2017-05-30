@@ -32,7 +32,7 @@ public class Team {
 	}
 	
 	public static double ratioToProbability2(double ratio){
-		return 0.25*(Math.exp(1.5*ratio)/Math.exp(1.5));
+		return 0.22*(Math.exp(1.5*ratio)/Math.exp(1.5));
 	}
 
 }

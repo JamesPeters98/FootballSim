@@ -40,20 +40,20 @@ public class MatchResult {
 			if((team.winStreak >= 1) && (homePoints!=1) ){
 				double oldAttack = team.attack;
 				double oldDefence = team.defence;
-				team.attack = 0.05*(Team.ratioToProbability2(1)-team.attack)+team.attack;
-				team.defence = 0.025*(Team.ratioToProbability(1)-team.defence)+team.defence;
+				team.attack = 0.025*(Team.ratioToProbability2(1)-team.attack)+team.attack;
+				team.defence = 0.0125*(Team.ratioToProbability(1)-team.defence)+team.defence;
 				//System.out.println(team.name+" on a "+team.winStreak+" match unbeaten streak increased attack from "+oldAttack+" to "+team.attack+". Difference = "+(team.attack-oldAttack)+" increased defence from "+oldDefence+" to "+team.defence+". Difference = "+(team.defence-oldDefence));
 			}
 			if(team.loseStreak >= 2){
 				double oldAttack = team.attack;
 				double oldDefence = team.defence;
-				if(team.defence > 0.065) team.attack = team.attack-0.05*(team.attack);
-				if(team.defence > 0.82) team.defence = team.defence-0.0025*(team.defence);
+				if(team.attack > 0.1) team.attack = team.attack-0.025*(team.attack);
+				if(team.defence > 0.85) team.defence = team.defence-0.004*(team.defence);
 				//System.out.println(team.name+" on a "+team.loseStreak+" loss streak decreased attack from "+oldAttack+" to "+team.attack+". Difference = "+(team.attack-oldAttack)+" decreased defence from "+oldDefence+" to "+team.defence+". Difference = "+(team.defence-oldDefence));
 			} else if(team.loseStreak >= 1) {
 				double oldAttack = team.attack;
 				double oldDefence = team.defence;
-				if(team.defence > 0.065) team.attack = team.attack-0.05*(team.attack);				
+				if(team.attack > 0.16) team.attack = team.attack-0.025*(team.attack);				
 				//System.out.println(team.name+" on a "+team.loseStreak+" loss streak decreased attack from "+oldAttack+" to "+team.attack+". Difference = "+(team.attack-oldAttack)+" decreased defence from "+oldDefence+" to "+team.defence+". Difference = "+(team.defence-oldDefence));
 
 			}

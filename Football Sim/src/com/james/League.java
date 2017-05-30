@@ -69,6 +69,13 @@ public class League {
 		if(result.getAwayPoints() == 0) statsAway.losses++;
 	}
 	
+	public void printWinner(){
+		ArrayList<LeagueStats> leagueStatsArray = new ArrayList<LeagueStats>(leagueStats.values());
+		Utils.sortArray(leagueStatsArray);
+		LeagueStats stats = leagueStatsArray.get(0);
+		System.out.println(stats.team.name+" won the Premier League! Total times won: "+stats.team.trophiesWon);
+	}
+	
 	public void printTable(){
 		System.out.format("%-2s%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{"","Team","Points","Goals Scored","Goals Conceeded","Wins","Draws","Losses"});
 		System.out.println("----------------------------------------------------------------------------------");
@@ -114,6 +121,8 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.trophiesWon});
 		}
+		
+		printWinner();
 		
 		Utils.sortArray(leagueStatsArray);
 		for(int i = 0; i < leagueStats.size();i++) {
