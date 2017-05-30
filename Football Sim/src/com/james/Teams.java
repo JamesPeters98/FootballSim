@@ -2,7 +2,7 @@ package com.james;
 
 public class Teams {
 	
-	public static Team LIVERPOOL = new Team(1,"Liverpool", 0.85,0.68,0.7,0.7);
+	public static Team LIVERPOOL = new Team(1,"Liverpool", 1.1,1.5,0.7,0.7);
 	public static Team CHELSEA = new Team(2,"Chelsea", 0.95,0.80,0.7,0.7);
 	public static Team MAN_CITY = new Team(3,"Manchester City", 0.92,0.65,0.7,0.7);
 	public static Team TOTTENHAM = new Team(4,"Tottenham", 0.89,0.78,0.7,0.7);

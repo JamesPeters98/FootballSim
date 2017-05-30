@@ -80,6 +80,8 @@ public class Game {
 		}
 		league.printTable();
 		league.newSeason();
+		Records.MOST_POINTS.printRecordTable();
+		Records.MOST_GOALS_IN_SEASON.printRecordTable();
 		Utils.promptEnterKey2(reader);
 		runSeason();
 	}

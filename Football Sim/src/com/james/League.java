@@ -85,6 +85,7 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s%-15s%-18s%-8s%-8s%-8s\n", new String[]{""+(i+1),stats.team.name,""+stats.points,""+stats.goals,""+stats.goalsConceeded,""+stats.wins,""+stats.draws,""+stats.losses});
 		}
+		System.out.println("");
 	}
 	
 	public void printAttackTable(){
@@ -96,6 +97,7 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.attack});
 		}
+		System.out.println("");
 	}
 	
 	public void printDefenceTable(){
@@ -107,6 +109,7 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.defence});
 		}
+		System.out.println("");
 	}
 	
 	public void newSeason(){
@@ -121,8 +124,10 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.trophiesWon});
 		}
+		System.out.println("");
 		
 		printWinner();
+		
 		
 		Utils.sortArray(leagueStatsArray);
 		for(int i = 0; i < leagueStats.size();i++) {
@@ -131,6 +136,8 @@ public class League {
 			team.totalPositions+=(i+1);
 			team.leaguesPlayed++;
 			team.averagePosition = (team.totalPositions/team.leaguesPlayed);
+			Records.MOST_POINTS.checkRecord(stats.points, team);
+			Records.MOST_GOALS_IN_SEASON.checkRecord(stats.goals, team);
 			//System.out.println(Team.ratioToProbability2(stats.goals/100.0));
 			//team.attack = (Team.ratioToProbability2(stats.goals/60.0));
 			//team.defence = (team.defence+(Team.ratioToProbability(1-(stats.goalsConceeded/100.0))))/2;
@@ -146,6 +153,7 @@ public class League {
 			LeagueStats stats = leagueStatsArray.get(i);
 		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.averagePosition});
 		}
+		System.out.println("");
 	}
 	
 	

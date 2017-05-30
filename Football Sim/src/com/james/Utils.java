@@ -112,6 +112,19 @@ public class Utils {
 		Collections.sort(collection, comparator);
 	}
 	
+	public static void sortArrayByBestRecord(ArrayList<RecordDetails> collection){
+		Comparator<RecordDetails> comparator = new Comparator<RecordDetails>() {
+		    @Override
+		    public int compare(RecordDetails left, RecordDetails right) {
+		        if(left.record > right.record) return -1;
+		        if(left.record < right.record) return 1;
+		        return 0;
+		    }
+		};
+
+		Collections.sort(collection, comparator);
+	}
+	
 //	public static void sortAlphabetical(List<Team> collection){
 //		Comparator<Team> comparator = new Comparator<Team>() {
 //		    @Override
