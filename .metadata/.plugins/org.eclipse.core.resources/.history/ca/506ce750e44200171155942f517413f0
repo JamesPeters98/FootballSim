@@ -1,9 +1,0 @@
-package com.james;
-
-public class LeagueStats {
-	
-	int points;
-	int goals;
-	int goalsConceeded;
-
-}

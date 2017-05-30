@@ -24,7 +24,7 @@ public class MatchSim implements KeyListener{
 	int teamAgoals;
 	int teamBgoals;
 
-	public MatchResult runMatch(Team home, Team away, int teamId) throws InterruptedException {
+	public MatchResult runMatch(Scanner scanner, Team home, Team away, int teamId) throws InterruptedException {
 		
 		if((teamId==home.id)||(teamId==away.id)){
 			System.out.println(home.name+" vs "+away.name);
@@ -45,24 +45,27 @@ public class MatchSim implements KeyListener{
 				
 				if((teamId==home.id)||(teamId==away.id)){
 					System.out.print("Min "+i+" |");
-					if(i==45){
-						System.out.println("Half Time!");
-						TimeUnit.SECONDS.sleep(3);
-					}
-					if(resultA.openPlayGoal()) System.out.println("GOAL! "+home.name+" "+teamAgoals+"-"+teamBgoals);
-					if(resultB.openPlayGoal()) System.out.println("GOAL! "+away.name+" "+teamAgoals+"-"+teamBgoals);
-					if(resultA.penaltyScored()) System.out.println("GOAL! Penalty! "+home.name+" "+teamAgoals+"-"+teamBgoals);
-					if(resultB.penaltyScored()) System.out.println("GOAL! Penalty! "+away.name+" "+teamAgoals+"-"+teamBgoals);
-					if(resultA.freekickScored()) System.out.println("GOAL! Freekick! "+home.name+" "+teamAgoals+"-"+teamBgoals);
-					if(resultB.freekickScored()) System.out.println("GOAL! Freekick! "+away.name+" "+teamAgoals+"-"+teamBgoals);
+					
+					if(resultA.openPlayGoal()) System.out.println(i+"' GOAL! "+home.name+" "+teamAgoals+"-"+teamBgoals);
+					if(resultB.openPlayGoal()) System.out.println(i+"' GOAL! "+away.name+" "+teamAgoals+"-"+teamBgoals);
+					if(resultA.penaltyScored()) System.out.println(i+"' GOAL! Penalty! "+home.name+" "+teamAgoals+"-"+teamBgoals);
+					if(resultB.penaltyScored()) System.out.println(i+"' GOAL! Penalty! "+away.name+" "+teamAgoals+"-"+teamBgoals);
+					if(resultA.freekickScored()) System.out.println(i+"' GOAL! Freekick! "+home.name+" "+teamAgoals+"-"+teamBgoals);
+					if(resultB.freekickScored()) System.out.println(i+"' GOAL! Freekick! "+away.name+" "+teamAgoals+"-"+teamBgoals);
 					if((resultA.resultType == ResultType.NOTHING)&&(resultB.resultType == ResultType.NOTHING)){
 						System.out.println("");
 					}
-					TimeUnit.MILLISECONDS.sleep(250);
+					TimeUnit.MILLISECONDS.sleep(150);
+					
+					if(i==45){
+						System.out.println("Half Time!"+home.name+" "+teamAgoals+"-"+teamBgoals+" "+away.name);
+						TimeUnit.SECONDS.sleep(2);
+					}
 					if(i==90){
 						System.out.println("Game Over!");
 						System.out.println(home.name+" "+teamAgoals+"-"+teamBgoals+" "+away.name);
 						System.out.println("");
+						Utils.promptEnterKey(scanner);
 						System.out.println("Other Results");
 						System.out.println("---------------");
 					}
