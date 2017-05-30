@@ -13,7 +13,12 @@ public class Utils {
 
 	public static void promptEnterKey(Scanner scanner){
 		   System.out.println("Press \"ENTER\" to continue...");
-		   //scanner.nextLine();
+		   scanner.nextLine();
+		}
+	
+	public static void promptEnterKey2(Scanner scanner){
+		   System.out.println("Press \"ENTER\" to continue...");
+		   scanner.nextLine();
 		}
 	
 	public static int readNumber(Scanner scanner, String message){
@@ -37,6 +42,58 @@ public class Utils {
 		        	}
 		        }
 				return 0;
+		    }
+		};
+
+		Collections.sort(collection, comparator);
+	}
+	
+	public static void sortArrayByAttack(ArrayList<LeagueStats> collection){
+		Comparator<LeagueStats> comparator = new Comparator<LeagueStats>() {
+		    @Override
+		    public int compare(LeagueStats left, LeagueStats right) {
+		        if(left.team.attack > right.team.attack) return -1;
+		        if(left.team.attack < right.team.attack) return 1;
+		        return 0;
+		    }
+		};
+
+		Collections.sort(collection, comparator);
+	}
+	
+	public static void sortArrayByDefence(ArrayList<LeagueStats> collection){
+		Comparator<LeagueStats> comparator = new Comparator<LeagueStats>() {
+		    @Override
+		    public int compare(LeagueStats left, LeagueStats right) {
+		        if(left.team.defence > right.team.defence) return -1;
+		        if(left.team.defence < right.team.defence) return 1;
+		        return 0;
+		    }
+		};
+
+		Collections.sort(collection, comparator);
+	}
+	
+	public static void sortArrayByTrophies(ArrayList<LeagueStats> collection){
+		Comparator<LeagueStats> comparator = new Comparator<LeagueStats>() {
+		    @Override
+		    public int compare(LeagueStats left, LeagueStats right) {
+		        if(left.team.trophiesWon > right.team.trophiesWon) return -1;
+		        if(left.team.trophiesWon < right.team.trophiesWon) return 1;
+		        return 0;
+		    }
+		};
+
+		Collections.sort(collection, comparator);
+	}
+	
+	public static void sortArrayByAvgPos(ArrayList<LeagueStats> collection){
+		Comparator<LeagueStats> comparator = new Comparator<LeagueStats>() {
+		    @Override
+		    public int compare(LeagueStats left, LeagueStats right) {
+		        if(left.team.averagePosition > right.team.averagePosition) return 1;
+		        if(left.team.averagePosition < right.team.averagePosition) return -1;
+		        return 0;
 		    }
 		};
 

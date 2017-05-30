@@ -44,7 +44,7 @@ public class MatchSim implements KeyListener{
 				if(resultB.penaltyScored()) penGoalsB++;
 				
 				if((teamId==home.id)||(teamId==away.id)){
-					//System.out.print("Min "+i+" |");
+					System.out.print("Min "+i+" |");
 					
 					if(resultA.openPlayGoal()) System.out.println(i+"' GOAL! "+home.name+" "+teamAgoals+"-"+teamBgoals);
 					if(resultB.openPlayGoal()) System.out.println(i+"' GOAL! "+away.name+" "+teamAgoals+"-"+teamBgoals);
@@ -53,13 +53,13 @@ public class MatchSim implements KeyListener{
 					if(resultA.freekickScored()) System.out.println(i+"' GOAL! Freekick! "+home.name+" "+teamAgoals+"-"+teamBgoals);
 					if(resultB.freekickScored()) System.out.println(i+"' GOAL! Freekick! "+away.name+" "+teamAgoals+"-"+teamBgoals);
 					if((resultA.resultType == ResultType.NOTHING)&&(resultB.resultType == ResultType.NOTHING)){
-						//System.out.println("");
+						System.out.println("");
 					}
-					//TimeUnit.MILLISECONDS.sleep(250);
+					TimeUnit.MILLISECONDS.sleep(150);
 					
 					if(i==45){
 						System.out.println("Half Time!"+home.name+" "+teamAgoals+"-"+teamBgoals+" "+away.name);
-						//TimeUnit.SECONDS.sleep(2);
+						TimeUnit.SECONDS.sleep(2);
 					}
 					if(i==90){
 						System.out.println("Game Over!");

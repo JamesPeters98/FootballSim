@@ -30,6 +30,14 @@ public class Game {
 		
 		team = Teams.LIVERPOOL;
 		
+//		while(true){
+//			for(int i=0;i<=100;i++){ runSeason();}
+//			Utils.promptEnterKey2(reader);
+//		}
+		runSeason();
+	}
+	
+	public static void runSeason(){
 		rounds = fixtureGenerator.getFixtures(league.getTeams(), true, teamId);
 		
 		System.out.println("Fixture List for "+team.name);
@@ -65,8 +73,15 @@ public class Game {
 		    Utils.promptEnterKey(reader);
 		    league.printTable();
 		    Utils.promptEnterKey(reader);
+		    league.printAttackTable();
+		    Utils.promptEnterKey(reader);
+		    league.printDefenceTable();
+		    Utils.promptEnterKey(reader);
 		}
 		league.printTable();
+		league.newSeason();
+		Utils.promptEnterKey2(reader);
+		runSeason();
 	}
 
 }

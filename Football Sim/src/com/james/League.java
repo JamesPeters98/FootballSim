@@ -80,6 +80,65 @@ public class League {
 		}
 	}
 	
+	public void printAttackTable(){
+		System.out.format("%-2s%-25s%-10s\n", new String[]{"","Team","Attack"});
+		System.out.println("----------------------------------------------------------------------------------");
+		ArrayList<LeagueStats> leagueStatsArray = new ArrayList<LeagueStats>(leagueStats.values());
+		Utils.sortArrayByAttack(leagueStatsArray);
+		for(int i = 0; i <leagueStatsArray.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.attack});
+		}
+	}
+	
+	public void printDefenceTable(){
+		System.out.format("%-2s%-25s%-10s\n", new String[]{"","Team","Defence"});
+		System.out.println("----------------------------------------------------------------------------------");
+		ArrayList<LeagueStats> leagueStatsArray = new ArrayList<LeagueStats>(leagueStats.values());
+		Utils.sortArrayByDefence(leagueStatsArray);
+		for(int i = 0; i <leagueStatsArray.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.defence});
+		}
+	}
+	
+	public void newSeason(){
+		ArrayList<LeagueStats> leagueStatsArray = new ArrayList<LeagueStats>(leagueStats.values());
+		Utils.sortArray(leagueStatsArray);
+		Team winners = leagueStatsArray.get(0).team;
+		winners.trophiesWon++;
+		Utils.sortArrayByTrophies(leagueStatsArray);
+		System.out.format("%-2s%-25s%-10s\n", new String[]{"","Team","Trophies"});
+		System.out.println("----------------------------------------------------------------------------------");
+		for(int i = 0; i <leagueStatsArray.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.trophiesWon});
+		}
+		
+		Utils.sortArray(leagueStatsArray);
+		for(int i = 0; i < leagueStats.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+			Team team = stats.team;
+			team.totalPositions+=(i+1);
+			team.leaguesPlayed++;
+			team.averagePosition = (team.totalPositions/team.leaguesPlayed);
+			//System.out.println(Team.ratioToProbability2(stats.goals/100.0));
+			//team.attack = (Team.ratioToProbability2(stats.goals/60.0));
+			//team.defence = (team.defence+(Team.ratioToProbability(1-(stats.goalsConceeded/100.0))))/2;
+			//System.out.println(team.name+"| Attack Difference: "+(team.attack-oldAttack)+"| Defence Difference: "+(team.defence-oldDefence));
+			stats.reset();
+			
+		}
+		
+		Utils.sortArrayByAvgPos(leagueStatsArray);
+		System.out.format("%-2s%-25s%-10s\n", new String[]{"","Team","Avg Pos"});
+		System.out.println("----------------------------------------------------------------------------------");
+		for(int i = 0; i <leagueStatsArray.size();i++) {
+			LeagueStats stats = leagueStatsArray.get(i);
+		    System.out.format("%-2s%-25s%-10s\n", new String[]{""+(i+1),stats.team.name,""+stats.team.averagePosition});
+		}
+	}
+	
 	
 	
 
